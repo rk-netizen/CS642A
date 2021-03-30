@@ -1,0 +1,10 @@
+UPDATE CS130_Lab7_Property set listingdate = '2017-10-15' WHERE (listingdate = '2017-10-13') OR (Listingdate = '2017-10-14');
+UPDATE CS130_Lab7_Property set askingprice = 100000 where askingprice > 95000 and askingprice < 100000;
+DELETE from CS130_Lab7_Property where (agent = 'PropertyKings') and (housetype = 'Semi-detached') and (energyrating  in ('C','D'))
+DELETE FROM CS130_Lab7_Property WHERE (agent is null) or (numbeds is null);
+update CS130_Lab7_Property set askingprice = askingprice*0.92 where (agent = 'CS130 Estates') and (askingprice between 300000 and 400000);
+delete from CS130_Lab7_Property where (address ~* '^.*\d{4,}.*Road$') and (char_length(address) > 20);
+SELECT S.studentlastname,s.studentgender,s.studentcourse,m.moduleid,m.moduletitle,m.modulesemester FROM Lab7_EnrolledOn as E, Lab7_Modules AS M, Lab7_Students as S WHERE (E.ModuleID = M.ModuleID) and (S.StudentID = E.StudentID) and (E.moduleid = 'CS123')
+SELECT S.studentlastname,s.studentgender,s.studentcourse,m.moduleid,m.moduletitle,m.modulesemester FROM Lab7_EnrolledOn as E, Lab7_Modules AS M, Lab7_Students as S WHERE (E.ModuleID = M.ModuleID) and (S.StudentID = E.StudentID) and (S.studentgender = 'female') and (m.modulesemester = 'Semester 1')
+SELECT S.studentlastname,s.studentgender,s.studentcourse,s.studentemail,m.moduleid,m.moduletitle,m.modulesemester FROM Lab7_EnrolledOn as E, Lab7_Modules AS M, Lab7_Students as S WHERE (E.ModuleID = M.ModuleID) and (S.StudentID = E.StudentID) and (S.studentemail like '%2017%')
+SELECT S.studentlastname,s.studentgender,s.studentcourse,s.studentemail,m.moduleid,m.moduletitle,m.modulesemester,m.modulecredits FROM Lab7_EnrolledOn as E, Lab7_Modules AS M, Lab7_Students as S WHERE (E.ModuleID = M.ModuleID) and (S.StudentID = E.StudentID) and (m.modulecredits between 10 and 15) and NOT (s.StudentCourse ~* '*.(BA|BSc).*$');

@@ -1,0 +1,4 @@
+SELECT Au.id, Au.name, Au.adm1_code from week6_aust_admin as Au WHERE ST_Contains(ST_Transform(Au.geom,3112), St_GeomFromText('POINT(-1185168.507 -3530274.048)',3112));
+SELECT Au.id as AdminID, Au.name as AdminName, T.id as TownID, T.name as TownName, T.pop_max as TownPop from week6_aust_admin as Au, week6_aust_towns as T WHERE ST_Contains(Au.geom,T.geom);  
+SELECT T.id from week6_aust_admin as Au, week6_aust_towns as T WHERE ST_Contains(Au.geom,T.geom) and Au.name = 'Queensland';
+SELECT T.id,T.name,T.geom,ST_Distance(ST_Transform(T.geom,3112),ST_Transform(ST_Centroid(Au.geom),3112))/1000 as distanceToCenter from week6_aust_admin as Au, week6_aust_towns as T WHERE ST_Contains(Au.geom,T.geom) and Au.name = 'Victoria' ORDER BY distanceToCenter asc LIMIT 10;
