@@ -1,4 +1,4 @@
-# CS642A
+# CS642A-Final Year Project
 Project done in fulfillment of CS642A
 
 Before running the code, run:
